@@ -17,7 +17,18 @@ jobs:
       run: git submodule update --init --recursive
     - name: bootstrap vcpkg
       run: ./vcpkg/bootstrap-vcpkg.sh 
-    - name: install llvm
+    - name: Cache
+      id: cache-vcpkg
+      uses: actions/cache@v2.1.0
+      with:
+        path: /home/runner/.cache/vcpkg
+        key: ${{ runner.os }}-vcpkg
+
+    - name: Install llvm
+      if: steps.cache-vcpkg.outputs.cache-hit != 'true'
       run: ./vcpkg/vcpkg install llvm
     - name: build
       run: cmake .
+
+
+
