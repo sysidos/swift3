@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: checkout submodules
+      run: git submodule update --init --recursive
     - name: bootstrap vcpkg
       run: ./vcpkg/bootstrap-vcpkg.sh 
     - name: install llvm
