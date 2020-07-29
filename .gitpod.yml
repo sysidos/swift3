@@ -1,5 +1,5 @@
 image:
   file: .gitpod.Dockerfile
 
-tasks:
-  - init: ./vcpkg/bootstrap-vcpkg.sh && ./vcpkg/vcpkg install llvm
+# tasks:
+#   - init: ./vcpkg/bootstrap-vcpkg.sh && ./vcpkg/vcpkg install llvm
